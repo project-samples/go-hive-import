@@ -1,11 +1,11 @@
 module hive-import
 
-go 1.18
+go 1.17
 
 require (
 	github.com/beltran/gohive v1.6.0
 	github.com/core-go/config v0.1.0
-	github.com/core-go/hive v0.2.1
+	github.com/core-go/hive v0.2.10
 	github.com/core-go/io v0.1.4
 	github.com/core-go/log v0.1.2
 )

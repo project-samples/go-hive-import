@@ -62,13 +62,13 @@ func NewApp(ctx context.Context, conf Config) (*ApplicationContext, error) {
 		"env": "dev",
 	}
 	logError := NewErrorHandler(log.ErrorFields, "fileName", "lineNo", &mp)
-	// writer := q.NewStreamWriter(connection, "users", userType, 5)
-	writer := q.NewInserter(connection, "users", userType)
+	writer := q.NewStreamWriter(connection, "users", userType, 4)
+	// writer := q.NewInserter(connection, "users", userType)
 	validator := v.NewValidator()
 	importer := NewImporter(userType, formatter.ToStruct, func(ctx context.Context, data interface{}, endLineFlag bool) error {
 		ctx = context.Background()
 		if endLineFlag {
-			// err = writer.Flush(ctx)
+			err = writer.Flush(ctx)
 			if err != nil {
 				return err
 			}

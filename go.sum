@@ -24,6 +24,7 @@ github.com/armon/go-metrics v0.0.0-20180917152333-f0300d1749da/go.mod h1:Q73ZrmV
 github.com/armon/go-radix v0.0.0-20180808171621-7fddfc383310/go.mod h1:ufUuZ+zHj4x4TnLV4JWEpy2hxWSpsRywHrMgIH9cCH8=
 github.com/beltran/gohive v1.6.0 h1:VqKaSeYhae4cY9QHfw8uqWZARq9yJdydiOVsqS63KbE=
 github.com/beltran/gohive v1.6.0/go.mod h1:IgDi0gD1c73aKKQyS+3j1+NWSNn5NUK7rDcg/Rr6mTs=
+github.com/beltran/gosasl v0.0.0-20200715011608-d5475aebb293/go.mod h1:Qx8cW6jkI8riyzmklj80kAIkv+iezFUTBiGU0qHhHes=
 github.com/beltran/gosasl v0.0.0-20230502191549-a9c03a2e2a59 h1:qzRPRnvm5LsOFhAYmfUun9nKXZBTY/zELsONtUj2yeY=
 github.com/beltran/gosasl v0.0.0-20230502191549-a9c03a2e2a59/go.mod h1:Qx8cW6jkI8riyzmklj80kAIkv+iezFUTBiGU0qHhHes=
 github.com/beltran/gssapi v0.0.0-20200324152954-d86554db4bab h1:ayfcn60tXOSYy5zUN1AMSTQo4nJCf7hrdzAVchpPst4=
@@ -36,8 +37,8 @@ github.com/cespare/xxhash v1.1.0/go.mod h1:XrSqR1VqqWfGrhpAt58auRo0WTKS1nRRg3ghf
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
 github.com/core-go/config v0.1.0 h1:PT9t/UrhNFo5tB0s45Ed99R6Lx3ibRwA2SdjNjbRCA0=
 github.com/core-go/config v0.1.0/go.mod h1:Pqxosu8ryByLKWyV6tDiwY+JAJc+YSlFy6MzQRFDO+g=
-github.com/core-go/hive v0.2.1 h1:hE7SguGCdQnkuExCIDnLf+oLHcFJRrsKAMUox4NLClc=
-github.com/core-go/hive v0.2.1/go.mod h1:9+Iu2LOHWWROcvsRIyTEJMVogD1vWalb0HtOFBGLNCw=
+github.com/core-go/hive v0.2.10 h1:+HCJFGc+y9Moh3y1xPKS1tsadztVhyJCI764NXL7BXg=
+github.com/core-go/hive v0.2.10/go.mod h1:9+Iu2LOHWWROcvsRIyTEJMVogD1vWalb0HtOFBGLNCw=
 github.com/core-go/io v0.1.4 h1:cHelyuSgMM8/TrLSLnm5ph5Mmn51yEYf3pth2hfay6c=
 github.com/core-go/io v0.1.4/go.mod h1:vwkZ3v+6pewHUpei/Kip90MVrHM5EWgQm5wz/h2PVHI=
 github.com/core-go/log v0.1.2 h1:xZINVk1QMWEojbUhjQ6pqqjUfTZh1Xg+fjmQxKSDDKA=
@@ -72,6 +73,7 @@ github.com/go-playground/universal-translator v0.18.0/go.mod h1:UvRDBj+xPUEGrFYl
 github.com/go-playground/validator/v10 v10.11.1 h1:prmOlTVv+YjZjmRmNSF3VmspqJIxJWXmqUsHwfTRRkQ=
 github.com/go-playground/validator/v10 v10.11.1/go.mod h1:i+3WkQ1FvaUjjxh1kSvIA4dMGDBiPU55YFDl0WbKdWU=
 github.com/go-stack/stack v1.8.0/go.mod h1:v0f6uXyyMGvRgIKkXu+yp6POWl0qKG85gN/melR3HDY=
+github.com/go-zookeeper/zk v1.0.1/go.mod h1:gpJdHazfkmlg4V0rt0vYeHYJHSL8hHFwV0qOd+HRTJE=
 github.com/go-zookeeper/zk v1.0.3 h1:7M2kwOsc//9VeeFiPtf+uSJlVpU66x9Ba5+8XK7/TDg=
 github.com/go-zookeeper/zk v1.0.3/go.mod h1:nOB03cncLtlp4t+UAkGSV+9beXP/akpekBwL+UX1Qcw=
 github.com/gogo/protobuf v1.1.1/go.mod h1:r8qH/GZQm5c6nD/R0oafs1akxWv10x8SbQlK7atdtwQ=
