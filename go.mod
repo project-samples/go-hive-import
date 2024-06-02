@@ -5,13 +5,13 @@ go 1.18
 require (
 	github.com/beltran/gohive v1.7.0
 	github.com/core-go/config v1.0.1
-	github.com/core-go/hive v0.7.0
+	github.com/core-go/hive v0.7.1
 	github.com/core-go/io v0.2.7
 	github.com/core-go/log v0.1.2
 )
 
 require (
-	github.com/apache/thrift v0.20.0 // indirect
+	github.com/apache/thrift v0.18.1 // indirect
 	github.com/beltran/gosasl v0.0.0-20230502191549-a9c03a2e2a59 // indirect
 	github.com/beltran/gssapi v0.0.0-20200324152954-d86554db4bab // indirect
 	github.com/fastly/go-utils v0.0.0-20180712184237-d95a45783239 // indirect

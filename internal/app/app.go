@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/beltran/gohive"
-	q "github.com/core-go/hive/batch"
+	b "github.com/core-go/hive/batch"
 	im "github.com/core-go/io/importer"
 	"github.com/core-go/io/reader"
 	"github.com/core-go/io/transform"
@@ -55,7 +55,7 @@ func NewApp(ctx context.Context, cfg Config) (*ApplicationContext, error) {
 		return nil, err
 	}
 	errorHandler := im.NewErrorHandler[*User](log.ErrorFields, "fileName", "lineNo", mp)
-	writer := q.NewStreamWriter[*User](connection, "users", 4)
+	writer := b.NewStreamWriter[*User](connection, "users", 4)
 	importer := im.NewImporter(reader.Read, transformer.Transform, validator.Validate, errorHandler.HandleError, errorHandler.HandleException, filename, writer.Write, writer.Flush)
 	return &ApplicationContext{Import: importer.Import}, nil
 }
