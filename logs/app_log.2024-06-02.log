@@ -1,0 +1,2 @@
+{"@timestamp":"2024-06-02T17:58:18.241+0700","level":"info","message":"Import file"}
+{"@timestamp":"2024-06-02T17:58:20.603+0700","level":"error","message":"Error when initialize: dial tcp [::1]:10000: connectex: No connection could be made because the target machine actively refused it."}
