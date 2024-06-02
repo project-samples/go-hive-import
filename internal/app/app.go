@@ -56,7 +56,7 @@ func NewApp(ctx context.Context, cfg Config) (*ApplicationContext, error) {
 	}
 	errorHandler := im.NewErrorHandler[*User](log.ErrorFields, "fileName", "lineNo", mp)
 	writer := q.NewStreamWriter[*User](connection, "users", 4)
-	importer := im.NewImporter(transformer.ToStruct, reader.Read, errorHandler.HandleException, validator.Validate, errorHandler.HandleError, filename, writer.Write, writer.Flush)
+	importer := im.NewImporter(reader.Read, transformer.Transform, validator.Validate, errorHandler.HandleError, errorHandler.HandleException, filename, writer.Write, writer.Flush)
 	return &ApplicationContext{Import: importer.Import}, nil
 }
 
