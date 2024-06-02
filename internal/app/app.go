@@ -2,16 +2,14 @@ package app
 
 import (
 	"context"
-	"fmt"
 	"path/filepath"
-	"reflect"
 	"time"
 
-	// q "hive-import/utils/hive"
-	q "github.com/core-go/hive"
-
-	. "github.com/beltran/gohive"
-	. "github.com/core-go/io/import"
+	"github.com/beltran/gohive"
+	q "github.com/core-go/hive/batch"
+	im "github.com/core-go/io/importer"
+	"github.com/core-go/io/reader"
+	"github.com/core-go/io/transform"
 	v "github.com/core-go/io/validator"
 	"github.com/core-go/log"
 )
@@ -20,40 +18,27 @@ type ApplicationContext struct {
 	Import func(ctx context.Context) (int, int, error)
 }
 
-func NewApp(ctx context.Context, conf Config) (*ApplicationContext, error) {
-	configuration := NewConnectConfiguration()
+func NewApp(ctx context.Context, cfg Config) (*ApplicationContext, error) {
+	configuration := gohive.NewConnectConfiguration()
 	configuration.PollIntervalInMillis = 3000
 	configuration.Database = "masterdata"
-	connection, errConn := Connect(conf.Hive.Host, conf.Hive.Port, conf.Hive.Auth, configuration)
+	connection, errConn := gohive.Connect(cfg.Hive.Host, cfg.Hive.Port, cfg.Hive.Auth, configuration)
 	if errConn != nil {
 		return nil, errConn
 	}
 
-	userType := reflect.TypeOf(User{})
-	csvType := DelimiterType
+	fileType := reader.DelimiterType
 	filename := ""
-	test := ""
-	if csvType == DelimiterType {
+	if fileType == reader.DelimiterType {
 		filename = "delimiter.csv"
-		test = "10,abraham59E,rory30@example.com,975-283-2267,TRUE,2019-02-20"
 	} else {
 		filename = "fixedlength.csv"
-		test = "00000000001 abraham59             rory30@example.com        975-283-2267 true2019-02-20"
 	}
 	generateFileName := func() string {
 		fullPath := filepath.Join("export", filename)
 		return fullPath
 	}
-	formatter, err := NewFormater(userType, csvType)
-	if err != nil {
-		return nil, err
-	}
-	// test formatter ToStruct
-	var user User
-	formatter.ToStruct(ctx, test, &user)
-	fmt.Println("user", user)
-	//reader, err := NewFixedlengthFileReader(generateFileName)
-	reader, err := NewDelimiterFileReader(generateFileName)
+	reader, err := reader.NewDelimiterFileReader(generateFileName)
 	if err != nil {
 		return nil, err
 	}
@@ -61,27 +46,17 @@ func NewApp(ctx context.Context, conf Config) (*ApplicationContext, error) {
 		"app": "import users",
 		"env": "dev",
 	}
-	logError := NewErrorHandler(log.ErrorFields, "fileName", "lineNo", &mp)
-	// writer := q.NewStreamWriter(connection, "users", userType, 5)
-	writer := q.NewInserter(connection, "users", userType)
-	validator := v.NewValidator()
-	importer := NewImporter(userType, formatter.ToStruct, func(ctx context.Context, data interface{}, endLineFlag bool) error {
-		ctx = context.Background()
-		if endLineFlag {
-			// err = writer.Flush(ctx)
-			if err != nil {
-				return err
-			}
-		} else {
-			if data != nil {
-				err := writer.Write(ctx, data)
-				if err != nil {
-					return err
-				}
-			}
-		}
-		return nil
-	}, reader.Read, logError.HandlerException, validator.Validate, logError.HandlerError, filename)
+	transformer, err := transform.NewDelimiterTransformer[User](",")
+	if err != nil {
+		return nil, err
+	}
+	validator, err := v.NewValidator[*User]()
+	if err != nil {
+		return nil, err
+	}
+	errorHandler := im.NewErrorHandler[*User](log.ErrorFields, "fileName", "lineNo", mp)
+	writer := q.NewStreamWriter[*User](connection, "users", 4)
+	importer := im.NewImporter(reader.Read, transformer.Transform, validator.Validate, errorHandler.HandleError, errorHandler.HandleException, filename, writer.Write, writer.Flush)
 	return &ApplicationContext{Import: importer.Import}, nil
 }
 
