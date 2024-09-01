@@ -11,7 +11,7 @@ require (
 )
 
 require (
-	github.com/apache/thrift v0.18.1 // indirect
+	github.com/apache/thrift v0.19.0 // indirect
 	github.com/beltran/gosasl v0.0.0-20240525201126-ea45571eeb66 // indirect
 	github.com/beltran/gssapi v0.0.0-20200324152954-d86554db4bab // indirect
 	github.com/fastly/go-utils v0.0.0-20180712184237-d95a45783239 // indirect

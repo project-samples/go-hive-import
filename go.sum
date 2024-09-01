@@ -1,5 +1,5 @@
-github.com/apache/thrift v0.18.1 h1:lNhK/1nqjbwbiOPDBPFJVKxgDEGSepKuTh6OLiXW8kg=
-github.com/apache/thrift v0.18.1/go.mod h1:rdQn/dCcDKEWjjylUeueum4vQEjG2v8v2PqriUnbr+I=
+github.com/apache/thrift v0.19.0 h1:sOqkWPzMj7w6XaYbJQG7m4sGqVolaW/0D28Ln7yPzMk=
+github.com/apache/thrift v0.19.0/go.mod h1:SUALL216IiaOw2Oy+5Vs9lboJ/t9g40C+G07Dc0QC1I=
 github.com/beltran/gohive v1.7.0 h1:Jvz6yrWuAAUWZ1Y84+24NjMcWYkUZZBUE7/sTWtLKY0=
 github.com/beltran/gohive v1.7.0/go.mod h1:IgDi0gD1c73aKKQyS+3j1+NWSNn5NUK7rDcg/Rr6mTs=
 github.com/beltran/gosasl v0.0.0-20240525201126-ea45571eeb66 h1:n0oppIiuivyic1ER0KPR6atp3xouMWt1tEtqM4OyvnI=
