@@ -17,5 +17,5 @@
 # version control
 .vscode
 .idea
-logs
 *.SVN
+logs
